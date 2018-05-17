@@ -2,6 +2,8 @@
   "name": "dockertest",
   "version": "1.0.0",
   "scripts": {
+    "test": "jest",
+    "cover": "npm test -- --coverage",
     "start": "node dist/index.js",
     "build": "rm -rf dist && tsc -p tsconfig.build.json",
     "dev":
@@ -13,9 +15,13 @@
   },
   "devDependencies": {
     "@types/dotenv": "^4.0.3",
+    "@types/jest": "^22.2.3",
     "@types/koa": "^2.0.45",
+    "babel-jest": "^22.4.3",
+    "jest": "^22.4.3",
     "nodemon": "^1.17.4",
     "prettier": "^1.11.0",
+    "ts-jest": "^22.4.6",
     "ts-node": "^6.0.3",
     "tslint": "^5.9.1",
     "tslint-config-prettier": "^1.9.0",
@@ -33,5 +39,26 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "testRegex": "(/__tests__/.*\\.(test|spec))\\.(ts|tsx|js)$",
+    "testPathIgnorePatterns": ["/node_modules/", "/dist/", "/src/bin/"],
+    "collectCoverageFrom": ["src/**/*.ts"],
+    "coveragePathIgnorePatterns": [
+      "<rootDir>/node_modules",
+      "<rootDir>/src/bin",
+      "<rootDir>/src/lib/env.ts",
+      "<rootDir>/src/lib/logger.ts",
+      "<rootDir>/src/lib/gcloud.ts",
+      "<rootDir>/src/connections/rethink.ts",
+      "<rootDir>/src/interfaces"
+    ],
+    "moduleFileExtensions": ["ts", "tsx", "js", "json"],
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest",
+      "^.+\\.tsx?$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    },
+    "coverageDirectory": "<rootDir>/coverage"
   }
 }
