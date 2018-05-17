@@ -1,0 +1,37 @@
+{
+  "name": "dockertest",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "rm -rf dist && tsc -p tsconfig.build.json",
+    "dev":
+      "nodemon --watch 'src/**/*.ts' --ignore 'src/**/*.spec.ts' --exec node --inspect -r ts-node/register src/index.ts"
+  },
+  "dependencies": {
+    "dotenv": "^5.0.1",
+    "koa": "^2.5.1"
+  },
+  "devDependencies": {
+    "@types/dotenv": "^4.0.3",
+    "@types/koa": "^2.0.45",
+    "nodemon": "^1.17.4",
+    "prettier": "^1.11.0",
+    "ts-node": "^6.0.3",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.9.0",
+    "tslint-config-standard": "^7.0.0",
+    "tslint-consistent-codestyle": "^1.12.0",
+    "typescript": "^2.8.3"
+  },
+  "prettier": {
+    "singleQuote": true,
+    "semi": false
+  },
+  "lint-staged": {
+    "*.ts": [
+      "tslint --project tsconfig.json --fix",
+      "prettier --write",
+      "git add"
+    ]
+  }
+}

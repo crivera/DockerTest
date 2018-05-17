@@ -1,0 +1,18 @@
+{
+  "extends": ["tslint-config-standard", "tslint-config-prettier"],
+  "rulesDirectory": ["tslint-consistent-codestyle"],
+  "rules": {
+    "no-var-requires": false,
+    "ordered-imports": [false],
+    "no-console": [false],
+    "member-access": [false],
+    "object-literal-sort-keys": false,
+    "await-promise": false,
+    "no-use-before-declare": false,
+    "no-unused-variable": false,
+    "no-unused": true,
+    "no-accessor-recursion": true,
+    "no-collapsible-if": true,
+    "object-shorthand-properties-first": true
+  }
+}
